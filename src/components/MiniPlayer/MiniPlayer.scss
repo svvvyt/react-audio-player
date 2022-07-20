@@ -1,0 +1,95 @@
+@import '../../styles/variables.scss';
+
+.mini-player {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  // &__progress-bar {
+  //   // TODO: check styles for different browsers
+  // }
+
+  &__main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__album-logo {
+    img {
+      width: 67px;
+      height: 67px;
+    }
+  }
+
+  &__credits {
+    width: 180px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__name {
+    margin-bottom: 5px;
+    color: $main-color;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      color: darken($color: $main-color, $amount: 7);
+    }
+
+    &:active {
+      color: darken($color: $main-color, $amount: 17);
+    }
+  }
+
+  &__artist {
+    color: $secondary-color;
+    font-size: 12px;
+    line-height: 16px;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      color: lighten($color: $secondary-color, $amount: 15);
+    }
+
+    &:active {
+      color: lighten($color: $secondary-color, $amount: 20);
+    }
+  }
+
+  &__control-panel {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    button {
+      width: 45px;
+      border: none;
+      background-color: $background-color;
+      border-radius: 50%;
+      padding: 12px;
+      cursor: pointer;
+      transition: $transition;
+
+      &:hover {
+        background-color: lighten($color: $background-color, $amount: 10);
+      }
+
+      &:active {
+        background-color: lighten($color: $background-color, $amount: 15);
+      }
+
+      svg {
+        path {
+          fill: $main-color;
+        }
+      }
+    }
+  }
+}
