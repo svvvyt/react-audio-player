@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
+
+import Button from '../UI/Button/Button';
 
 import './MiniPlayer.scss';
 
@@ -11,10 +13,11 @@ export default function MiniPlayer({
   setCurrentSongIndex,
 }) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioEl = useRef();
+  const audioRef = useRef();
+  const progressBarRef = useRef();
 
-  function handlePlaying() {
-    setIsPlaying(!isPlaying);
+  function changeRange() {
+    audioRef.current.currentTime = progressBarRef.current.value;
   }
 
   function skipSong(forwards = true) {
@@ -44,32 +47,37 @@ export default function MiniPlayer({
 
   useEffect(() => {
     if (isPlaying) {
-      audioEl.current.play();
+      audioRef.current.play();
     } else {
-      audioEl.current.pause();
+      audioRef.current.pause();
     }
   });
 
   return (
     <div className="mini-player">
-      <audio src={songs[currentSongIndex].source} ref={audioEl} />
-      {/* <div className="current-song__progress-bar">
-        <input type="range" defaultValue="0" />
-      </div> */}
-      <div className="mini-player__main">
+      <audio src={songs[currentSongIndex].mp3File} ref={audioRef} />
+      <div className="current-song__progress-bar">
+        <input
+          onChange={changeRange}
+          ref={progressBarRef}
+          type="range"
+          defaultValue="0"
+        />
+      </div>
+      <div className="mini-player__container">
         <div className="mini-player__album-logo">
-          <img src={songs[currentSongIndex].imgSrc} alt="" />
+          <img src={songs[currentSongIndex].albumImg} alt="" />
         </div>
         <div className="mini-player__credits">
           <div className="mini-player__name">
-            {songs[currentSongIndex].title}
+            {songs[currentSongIndex].songTitle}
           </div>
           <div className="mini-player__artist">
             {songs[currentSongIndex].artist}
           </div>
         </div>
-        <div className="mini-player__control-panel">
-          <button onClick={() => skipSong(false)}>
+        <div className="mini-player__controls">
+          <Button onClick={() => skipSong(false)}>
             <svg
               width="20"
               height="16"
@@ -82,11 +90,11 @@ export default function MiniPlayer({
                 fill="#EAF0FF"
               />
             </svg>
-          </button>
-          <button onClick={handlePlaying}>
+          </Button>
+          <Button onClick={() => setIsPlaying(!isPlaying)}>
             <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
-          </button>
-          <button onClick={() => skipSong()}>
+          </Button>
+          <Button onClick={() => skipSong()}>
             <svg
               width="21"
               height="21"
@@ -99,7 +107,7 @@ export default function MiniPlayer({
                 fill="#EAF0FF"
               />
             </svg>
-          </button>
+          </Button>
         </div>
       </div>
     </div>

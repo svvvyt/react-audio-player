@@ -1,0 +1,36 @@
+{
+  "songs" : [
+      {
+      "id": 1,
+      "songTitle": "Otherland",
+      "albumTitle": "A Twist in the Myth",
+      "artist": "Blind Guardian",
+      "albumImg": "https://4.downloader.disk.yandex.ru/preview/597e9dbfdeed7c1069b862a6fd488dff6cc3fad0fbc7d45e5f8a74a5d1c422eb/inf/p6Iz52rWvB83sPOmloquTtjwwnVfUWdvkbac9K4DEc2auElE4v09hJrxdzUiqocUcEVYekSU-T1ZpuKnYucWQA%3D%3D?uid=517023408&filename=Blind_Guardian-A_Twist_in_the_Myth.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=517023408&tknv=v2&size=1905x912",
+      "mp3File": "https://audio.jukehost.co.uk/1gGE8wTtkkHHyCRsr6HTpYs0aWUYXowk"
+    },
+    {
+      "id": 2,
+      "songTitle": "The Bard's Song (in the Forest)",
+      "albumTitle": "Somewhere Far Beyond",
+      "artist": "Blind Guardian",
+      "albumImg": "https://4.downloader.disk.yandex.ru/preview/d59ac47858ce10e374d4ff8e5a906d034531188e1e0aa1f8d500c861a59b1225/inf/lxmABX7jYUY2nA0q-41OdwusJUUMIK56ts-URTWvaz4vbokf0PevoEKZbhRn_Y8aCsXfQeoM_cfs27Q4oo6odQ%3D%3D?uid=517023408&filename=Blind_Guardian-Somewhere%20Far%20Beyond.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=517023408&tknv=v2&size=1905x912",
+      "mp3File": "https://audio.jukehost.co.uk/4uzJQzv0277bMyqsnpcSupCYZWqITj1H"
+    },
+    {
+      "id": 3,
+      "songTitle": "To France",
+      "albumTitle": "Tales from the Twilight World",
+      "artist": "Blind Guardian",
+      "albumImg": "https://2.downloader.disk.yandex.ru/preview/be7afd7e805601ac98d5e8004dfb736fe9d64f76762db5c2f824d5eee0a9a801/inf/29512FjS8phVEg3ep65Vs-3UtaxBJ8C0x893pg3MwyXepGcJWgwIl6AlbdD4IL7GBeSctjQj2P6JDvOgo_Wpsg%3D%3D?uid=517023408&filename=Blind_Guardian-To_France.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=517023408&tknv=v2&size=1905x912",
+      "mp3File": "https://audio.jukehost.co.uk/p97c4aS3ocVwkmmuYNmJTov6CH5bh4He"
+    },
+    {
+      "id": 4,
+      "songTitle": "War Of The Thrones",
+      "albumTitle": "At the Edge of Time",
+      "artist": "Blind Guardian",
+      "albumImg": "https://downloader.disk.yandex.ru/preview/b1806e4e9d63cbd06d399f8eb38211f1d738d791b6429ed14dc72a57a9f2bc5e/62dadf09/kVcE4mDgoosIsGFiAVSAie3UtaxBJ8C0x893pg3MwyW0gTudFSb5lhDyKw4VeeB5NjsiiTMKmohC8pQLDCpu6g%3D%3D?uid=0&filename=Blind_Guardian-At_the_Edge_of_Time.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=0&tknv=v2&size=2048x2048",
+      "mp3File": "https://audio.jukehost.co.uk/wk6vGONuvfj9EJr7AbtUrmWtyuv7Ok9H"
+    }
+  ]   
+}

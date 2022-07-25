@@ -1,0 +1,23 @@
+@import '../../../styles/variables.scss';
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border: none;
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 12px;
+  cursor: pointer;
+  transition: $transition;
+
+  &:hover {
+    background-color: lighten($color: $background-color, $amount: 15);
+  }
+
+  &:active {
+    background-color: lighten($color: $background-color, $amount: 30);
+  }
+}

@@ -1,0 +1,72 @@
+@import '../../styles/variables.scss';
+
+.album {
+  width: 205px;
+  min-height: 275px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  transition: $transition;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten($color: $background-color, $amount: 7);
+  }
+
+  &:active {
+    background-color: lighten($color: $background-color, $amount: 15);
+  }
+
+  &__logo {
+    margin-bottom: 10px;
+
+    img {
+      width: 190px;
+      height: 190px;
+      border-radius: 10px;
+    }
+  }
+
+  &__credits {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__name {
+    color: $main-color;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 22px;
+    cursor: pointer;
+    transition: $transition;
+    margin-bottom: 5px;
+
+    &:hover {
+      color: darken($color: $main-color, $amount: 7);
+    }
+
+    &:active {
+      color: darken($color: $main-color, $amount: 17);
+    }
+  }
+
+  &__artist {
+    color: $secondary-color;
+    font-size: 12px;
+    line-height: 16px;
+    cursor: pointer;
+    transition: $transition;
+
+    &:hover {
+      color: lighten($color: $secondary-color, $amount: 15);
+    }
+
+    &:active {
+      color: lighten($color: $secondary-color, $amount: 20);
+    }
+  }
+}
