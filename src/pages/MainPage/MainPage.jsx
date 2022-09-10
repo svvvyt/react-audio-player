@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { useNavigate } from 'react-router-dom';
 
 import Album from '../../components/Album/Album';
 import MiniPlayer from '../../components/MiniPlayer/MiniPlayer';
 import SideMenu from '../../components/SideMenu/SideMenu';
-
-import 'swiper/scss';
+import Search from '../../components/Search/Search';
 
 import './MainPage.scss';
 
@@ -14,6 +13,9 @@ import db from '../../db.json';
 export default function MainPage() {
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     setNextSongIndex(() => {
@@ -29,33 +31,38 @@ export default function MainPage() {
       <div className="main-page">
         <div className="main-page__header">
           <SideMenu />
-          <div className="main-page__search"></div>
+          <Search
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
         <div className="main-page__content">
           <div className="main-page__playlist">
             <div className="main-page__playlist-title">My Playlist</div>
             <div className="main-page__playlist-content">
-              <Swiper spaceBetween={100} slidesPerView={2}>
-                {db.songs &&
-                  db.songs.map((song, index) => (
-                    <SwiperSlide>
-                      <Album songs={db.songs} songIndex={index} />
-                    </SwiperSlide>
-                  ))}
-              </Swiper>
+              {db.songs &&
+                db.songs.map((song, index) => (
+                  <Album
+                    className="main-page__playlist-item"
+                    songs={db.songs}
+                    songIndex={index}
+                    onClick={() => navigate('/album')}
+                  />
+                ))}
             </div>
           </div>
           <div className="main-page__playlist">
             <div className="main-page__playlist-title">My Playlist</div>
             <div className="main-page__playlist-content">
-              <Swiper spaceBetween={100} slidesPerView={2}>
-                {db.songs &&
-                  db.songs.map((song, index) => (
-                    <SwiperSlide>
-                      <Album songs={db.songs} songIndex={index} />
-                    </SwiperSlide>
-                  ))}
-              </Swiper>
+              {db.songs &&
+                db.songs.map((song, index) => (
+                  <Album
+                    className="main-page__playlist-item"
+                    songs={db.songs}
+                    songIndex={index}
+                    onClick={() => navigate('/album')}
+                  />
+                ))}
             </div>
           </div>
         </div>
@@ -65,6 +72,7 @@ export default function MainPage() {
           songs={db.songs}
           currentSongIndex={currentSongIndex}
           setCurrentSongIndex={setCurrentSongIndex}
+          onClick={() => navigate('/song')}
         />
       </div>
     </>

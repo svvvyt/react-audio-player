@@ -3,13 +3,17 @@
   display: flex;
   flex-direction: column;
 
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
   &__side-menu {
   }
 
   &__search {
-  }
-
-  &__content {
   }
 
   &__playlist {
@@ -25,11 +29,12 @@
     &-content {
       display: flex;
       flex-direction: row;
+      overflow-x: auto;
     }
-  }
 
-  &__mini-player {
-    position: absolute;
-    bottom: 0;
+    &__mini-player {
+      position: absolute;
+      bottom: 0;
+    }
   }
 }

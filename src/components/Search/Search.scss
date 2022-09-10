@@ -1,0 +1,21 @@
+@import '../../styles/variables.scss';
+
+.search {
+  transition: $transition;
+
+  &__field {
+    display: flex;
+    flex-direction: row;
+    border: 1px solid #ffffff;
+    border-radius: 30px;
+
+    input {
+      width: 200px;
+      outline: none;
+      border: none;
+      color: #ffffff;
+      background-color: transparent;
+      padding-left: 15px;
+    }
+  }
+}

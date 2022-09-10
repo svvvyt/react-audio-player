@@ -2,13 +2,12 @@
 
 .App {
   width: 380px;
-  height: calc(100vh - 150px);
+  height: calc(100vh - 50px);
   background-color: $background-color;
   color: $main-color;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  border-radius: 15px;
   box-shadow: 1px 2px 5px #000;
 }

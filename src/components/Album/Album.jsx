@@ -2,9 +2,9 @@ import React from 'react';
 
 import './Album.scss';
 
-export default function Album({ songs, songIndex }) {
+export default function Album({ songs, songIndex, onClick }) {
   return (
-    <div className="album">
+    <div onClick={onClick} className="album">
       <div className="album__logo">
         <img src={songs[songIndex].albumImg} alt="album logo" />
       </div>

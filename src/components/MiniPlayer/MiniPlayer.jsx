@@ -11,14 +11,44 @@ export default function MiniPlayer({
   songs,
   currentSongIndex,
   setCurrentSongIndex,
+  onClick,
 }) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const audioRef = useRef();
-  const progressBarRef = useRef();
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
 
-  function changeRange() {
+  const audioRef = useRef(null);
+  const progressBarRef = useRef(null);
+  const animationRef = useRef(null);
+
+  useEffect(() => {
+    const seconds = Math.floor(audioRef.current.duration);
+    setDuration(seconds);
+    progressBarRef.current.max = seconds;
+  }, [audioRef?.current?.loadedmetadata, audioRef?.current?.readyState]);
+
+  const formatTime = (secs) => {
+    const minutes = Math.floor(secs / 60);
+    const returnedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+
+    const seconds = Math.floor(secs % 60);
+    const returnedSeconds = seconds < 10 ? `0${seconds}` : seconds;
+
+    return `${returnedMinutes}:${returnedSeconds}`;
+  };
+
+  const changePlayerCurrentTime = () => {
+    progressBarRef.current.style.setProperty(
+      '--seek-before-width',
+      `${(progressBarRef.current.value / duration) * 100}%`
+    );
+    setCurrentTime(progressBarRef.current.value);
+  };
+
+  const changeRange = () => {
     audioRef.current.currentTime = progressBarRef.current.value;
-  }
+    changePlayerCurrentTime();
+  };
 
   function skipSong(forwards = true) {
     if (forwards) {
@@ -45,31 +75,56 @@ export default function MiniPlayer({
     }
   }
 
+  const handleNext = () => {
+    skipSong();
+  };
+
+  const whilePlaying = () => {
+    progressBarRef.current.value = audioRef.current.currentTime;
+    changePlayerCurrentTime();
+    animationRef.current = requestAnimationFrame(whilePlaying);
+  };
+
   useEffect(() => {
     if (isPlaying) {
       audioRef.current.play();
+      animationRef.current = requestAnimationFrame(whilePlaying);
     } else {
       audioRef.current.pause();
+      cancelAnimationFrame(animationRef.current);
     }
   });
 
   return (
     <div className="mini-player">
-      <audio src={songs[currentSongIndex].mp3File} ref={audioRef} />
-      <div className="current-song__progress-bar">
+      <audio
+        src={songs[currentSongIndex].mp3File}
+        ref={audioRef}
+        onEnded={handleNext}
+      />
+      <div>
         <input
+          className="mini-player__progress-bar"
           onChange={changeRange}
           ref={progressBarRef}
           type="range"
           defaultValue="0"
         />
       </div>
+      <div className="mini-player__timers">
+        <div className="mini-player__current-time">
+          {formatTime(currentTime)}
+        </div>
+        <div className="mini-player__duration">
+          {duration && !Number.isNaN(duration) ? formatTime(duration) : '00:00'}
+        </div>
+      </div>
       <div className="mini-player__container">
         <div className="mini-player__album-logo">
-          <img src={songs[currentSongIndex].albumImg} alt="" />
+          <img src={songs[currentSongIndex].albumImg} alt="album-logo" />
         </div>
         <div className="mini-player__credits">
-          <div className="mini-player__name">
+          <div className="mini-player__name" onClick={onClick}>
             {songs[currentSongIndex].songTitle}
           </div>
           <div className="mini-player__artist">
