@@ -1,0 +1,15 @@
+.song-page {
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 50px;
+  }
+
+  &__main {
+  }
+}

@@ -6,7 +6,6 @@
   &__field {
     display: flex;
     flex-direction: row;
-    border: 1px solid #ffffff;
     border-radius: 30px;
 
     input {
@@ -16,6 +15,11 @@
       color: #ffffff;
       background-color: transparent;
       padding-left: 15px;
+
+      &::placeholder {
+        color: #fff;
+        opacity: 0.6;
+      }
     }
   }
 }

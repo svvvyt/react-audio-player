@@ -132,7 +132,7 @@ export default function MiniPlayer({
           </div>
         </div>
         <div className="mini-player__controls">
-          <Button onClick={() => skipSong(false)}>
+          <Button mini onClick={() => skipSong(false)}>
             <svg
               width="20"
               height="16"
@@ -149,7 +149,7 @@ export default function MiniPlayer({
           <Button onClick={() => setIsPlaying(!isPlaying)}>
             <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
           </Button>
-          <Button onClick={() => skipSong()}>
+          <Button mini onClick={() => skipSong()}>
             <svg
               width="21"
               height="21"

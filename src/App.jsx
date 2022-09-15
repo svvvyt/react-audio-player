@@ -4,6 +4,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import MainPage from './pages/MainPage/MainPage';
 import AlbumPage from './pages/AlbumPage/AlbumPage';
 import SongPage from './pages/SongPage/SongPage';
+import UploadPage from './pages/UploadPage/UploadPage';
 import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 
 import './App.scss';
@@ -16,6 +17,7 @@ function App() {
         <Route path="/main" element={<MainPage />} />
         <Route path="/album" element={<AlbumPage />} />
         <Route path="/song" element={<SongPage />} />
+        <Route path="/upload" element={<UploadPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>

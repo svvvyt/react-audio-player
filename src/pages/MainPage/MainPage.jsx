@@ -3,8 +3,8 @@ import { useNavigate } from 'react-router-dom';
 
 import Album from '../../components/Album/Album';
 import MiniPlayer from '../../components/MiniPlayer/MiniPlayer';
-import SideMenu from '../../components/SideMenu/SideMenu';
 import Search from '../../components/Search/Search';
+import Button from '../../components/UI/Button/Button';
 
 import './MainPage.scss';
 
@@ -27,23 +27,37 @@ export default function MainPage() {
   }, [currentSongIndex]);
 
   return (
-    <>
+    <div>
       <div className="main-page">
         <div className="main-page__header">
-          <SideMenu />
+          <Button onClick={() => navigate('/upload')}>
+            <svg
+              width="25"
+              height="25"
+              viewBox="0 0 25 25"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M12.7961 3.18936L19.1961 9.58936M12.7961 3.18936L6.39613 9.58936M12.7961 3.18936L12.7961 23.1894"
+                stroke="#EAF0FF"
+                strokeWidth="2"
+              />
+            </svg>
+          </Button>
           <Search
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
           />
         </div>
         <div className="main-page__content">
-          <div className="main-page__playlist">
-            <div className="main-page__playlist-title">My Playlist</div>
-            <div className="main-page__playlist-content">
+          <div className="main-page__playlists">
+            <div className="main-page__playlists-title">My Playlists</div>
+            <div className="main-page__playlists-content">
               {db.songs &&
                 db.songs.map((song, index) => (
                   <Album
-                    className="main-page__playlist-item"
+                    className="main-page__playlists-item"
                     songs={db.songs}
                     songIndex={index}
                     onClick={() => navigate('/album')}
@@ -51,13 +65,13 @@ export default function MainPage() {
                 ))}
             </div>
           </div>
-          <div className="main-page__playlist">
-            <div className="main-page__playlist-title">My Playlist</div>
-            <div className="main-page__playlist-content">
+          <div className="main-page__playlists">
+            <div className="main-page__playlists-title">My Playlists</div>
+            <div className="main-page__playlists-content">
               {db.songs &&
                 db.songs.map((song, index) => (
                   <Album
-                    className="main-page__playlist-item"
+                    className="main-page__playlists-item"
                     songs={db.songs}
                     songIndex={index}
                     onClick={() => navigate('/album')}
@@ -75,6 +89,6 @@ export default function MainPage() {
           onClick={() => navigate('/song')}
         />
       </div>
-    </>
+    </div>
   );
 }

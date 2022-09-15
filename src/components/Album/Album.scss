@@ -22,12 +22,27 @@
 
   &__logo {
     margin-bottom: 10px;
+    position: relative;
 
     img {
       width: 190px;
       height: 190px;
       border-radius: 10px;
     }
+  }
+
+  &__foreground-img {
+    z-index: 2;
+    position: relative;
+    pointer-events: none;
+  }
+
+  &__background-img {
+    position: absolute;
+    top: 2px;
+    left: 0;
+    z-index: 1;
+    filter: blur(6px);
   }
 
   &__credits {

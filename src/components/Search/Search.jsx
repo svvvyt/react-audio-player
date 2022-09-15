@@ -4,7 +4,7 @@ import Button from '../UI/Button/Button';
 import './Search.scss';
 
 export default function Search({ value, onChange }) {
-  const [isActive, setIsActive] = useState(true);
+  const [isActive, setIsActive] = useState(false);
 
   const handleCloseSearch = () => {
     setIsActive(false);
