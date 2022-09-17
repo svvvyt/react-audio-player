@@ -1,0 +1,188 @@
+{
+  "albums": [
+    {
+      "id": 1,
+      "albumTitle": "A Twist in the Myth",
+      "artist": "Blind Guardian",
+      "releaseDate": "01-09-2006",
+      "genre": "Power Metal",
+      "albumImg": "https://4.downloader.disk.yandex.ru/preview/597e9dbfdeed7c1069b862a6fd488dff6cc3fad0fbc7d45e5f8a74a5d1c422eb/inf/p6Iz52rWvB83sPOmloquTtjwwnVfUWdvkbac9K4DEc2auElE4v09hJrxdzUiqocUcEVYekSU-T1ZpuKnYucWQA%3D%3D?uid=517023408&filename=Blind_Guardian-A_Twist_in_the_Myth.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=517023408&tknv=v2&size=1905x912",
+      "songs": [
+        {
+          "id": 1,
+          "songTitle": "All the King's Horses",
+          "mp3File": "https://audio.jukehost.co.uk/DM0sqgwil1TXXZMPEliDLuNQcwNDn8LJ",
+          "artist": "Blind Guardian"
+        },
+        {
+          "id": 2,
+          "songTitle": "Another Stranger Me",
+          "mp3File": "https://audio.jukehost.co.uk/CyqavOo9jLHhgdjq66fSFLMDJEWnjDjW",
+          "artist": "Blind Guardian"
+        },
+        {
+          "id": 3,
+          "songTitle": "Carry the Blessed Home",
+          "mp3File": "https://audio.jukehost.co.uk/srXNa55i73HurSiwE8ZkZ8ubJJcmajeT",
+          "artist": "Blind Guardian"
+        },
+        {
+          "id": 4,
+          "songTitle": "Fly",
+          "mp3File": "https://audio.jukehost.co.uk/6dGBhwNSZOxwOwJ98QvYQzRVLiUjIiIg",
+          "artist": "Blind Guardian"
+        },
+        {
+          "id": 5,
+          "songTitle": "Otherland",
+          "mp3File": "https://audio.jukehost.co.uk/1gGE8wTtkkHHyCRsr6HTpYs0aWUYXowk",
+          "artist": "Blind Guardian"
+        },
+        {
+          "id": 6,
+          "songTitle": "This Will Never End",
+          "mp3File": "https://audio.jukehost.co.uk/58B1UwHQhVsPz7f7PTEnXHkJSiLjv7p6",
+          "artist": "Blind Guardian"
+        },
+        {
+          "id": 7,
+          "songTitle": "Turn the Page",
+          "mp3File": "https://audio.jukehost.co.uk/zHgGwz0xzvF3WS4ShinL6ZfEo9AJ2Xak",
+          "artist": "Blind Guardian"
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "albumTitle": "Somewhere Far Beyond",
+      "artist": "Blind Guardian",
+      "releaseDate": "30-06-1992",
+      "genre": "Power Metal",
+      "albumImg": "https://4.downloader.disk.yandex.ru/preview/d59ac47858ce10e374d4ff8e5a906d034531188e1e0aa1f8d500c861a59b1225/inf/lxmABX7jYUY2nA0q-41OdwusJUUMIK56ts-URTWvaz4vbokf0PevoEKZbhRn_Y8aCsXfQeoM_cfs27Q4oo6odQ%3D%3D?uid=517023408&filename=Blind_Guardian-Somewhere%20Far%20Beyond.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=517023408&tknv=v2&size=1905x912",
+      "songs": [
+        {
+          "id": 1,
+          "songTitle": "Ashes to Ashes",
+          "mp3File": "https://audio.jukehost.co.uk/vSJ2cSf2vJ5RkgWrCQdrzlmpdefAXBrg",
+          "artist": "Blind Guardian"
+        },
+        {
+          "id": 2,
+          "songTitle": "Somewhere Far Beyond",
+          "mp3File": "https://audio.jukehost.co.uk/2e4tCUYcMiG4T3T6yY5vkbYvVXgCRF7r",
+          "artist": "Blind Guardian"
+        },
+        {
+          "id": 3,
+          "songTitle": "Theathe of Pain",
+          "mp3File": "https://audio.jukehost.co.uk/CcSkcWkJViv5stzTjHAIUUxGhm2fA2PR",
+          "artist": "Blind Guardian"
+        },
+        {
+          "id": 4,
+          "songTitle": "The Bard's Song (in the Forest)",
+          "mp3File": "https://audio.jukehost.co.uk/3iviDoVR0mrhavvhkg3XwzFhcmIqckOO",
+          "artist": "Blind Guardian"
+        },
+        {
+          "id": 5,
+          "songTitle": "The Bard's Song (the Hobbit)",
+          "mp3File": "https://audio.jukehost.co.uk/CVmMyKzTDHU21SR8WtfSOqF2wZycBxXM",
+          "artist":"Blind Guardian"
+        },
+        {
+          "id": 6,
+          "songTitle": "Time What is Time",
+          "mp3File": "https://audio.jukehost.co.uk/YttbHaAc8n3ttKlpygtjqf1FwvePbbFk",
+          "artist":"Blind Guardian"
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "albumTitle": "At the Edge of Time",
+      "artist": "Blind Guardian",
+      "releaseDate": "29-07-2010",
+      "genre": "Power Metal",
+      "albumImg": "https://3.downloader.disk.yandex.ru/preview/1327f4fa9b584a7708d3a95b8817e10896644571e810a0ee89a0a598692b153c/inf/kVcE4mDgoosIsGFiAVSAie3UtaxBJ8C0x893pg3MwyW0gTudFSb5lhDyKw4VeeB5NjsiiTMKmohC8pQLDCpu6g%3D%3D?uid=517023408&filename=Blind_Guardian-At_the_Edge_of_Time.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=517023408&tknv=v2&size=1905x912",
+      "songs": [
+        {
+          "id": 1,
+          "songTitle": "A Voice in the Dark",
+          "mp3File": "https://audio.jukehost.co.uk/0tJvwdGyFXsef7INyayK1mp8GFl3BoK2",
+          "artist": "Blind Guardian"
+        },
+        {
+          "id": 2,
+          "songTitle": "Curse My Name", 
+          "mp3File": "https://audio.jukehost.co.uk/tAXOVmxjXldm8lO4N1RchzQ2PrwBqPSG",
+          "artist": "Blind Guardian"
+        },
+        {
+          "id": 3,
+          "songTitle": "Ride into Obsession",
+          "mp3File": "https://audio.jukehost.co.uk/m3KjGvH1HT1N0WpL87summ4t4uHDf3h2",
+          "artist":"Blind Guardian"
+        },
+        {
+          "id": 4,
+          "songTitle": "Valkyries",
+          "mp3File": "https://audio.jukehost.co.uk/ixcwNjV0GF1rQGFiiQPudLGEXoajPiMA",
+          "artist":"Blind Guardian"
+        },
+        {
+          "id": 5,
+          "songTitle": "War of the Thrones",
+          "mp3File": "https://audio.jukehost.co.uk/CAYgMNA9wVbSU8uvWbK0FyDMxTadjdD3",
+          "artist":"Blind Guardian"
+        },
+        {
+          "id": 6,
+          "songTitle": "Wheel of Time",
+          "mp3File": "https://audio.jukehost.co.uk/eWHTP94dLP6A4KjlCktdOxkWI7YvrlJF",
+          "artist": "Blind Guardian"
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "albumTitle": "Tales from the Twilight World",
+      "artist": "Blind Guardian",
+      "releaseDate": "03-10-1990",
+      "genre": "Power Metal",
+      "albumImg": "https://2.downloader.disk.yandex.ru/preview/be7afd7e805601ac98d5e8004dfb736fe9d64f76762db5c2f824d5eee0a9a801/inf/29512FjS8phVEg3ep65Vs-3UtaxBJ8C0x893pg3MwyXepGcJWgwIl6AlbdD4IL7GBeSctjQj2P6JDvOgo_Wpsg%3D%3D?uid=517023408&filename=Blind_Guardian-To_France.jpg&disposition=inline&hash=&limit=0&content_type=image%2Fjpeg&owner_uid=517023408&tknv=v2&size=1905x911",
+      "songs": [
+        {
+          "id": 1,
+          "songTitle": "Goodbye My Friend",
+          "mp3File": "https://audio.jukehost.co.uk/uji9AbEcrpcTVZto4xLsPMAoqzdFv9yH",
+          "artist":"Blind Guardian"
+        },
+        {
+          "id": 2,
+          "songTitle": "Lord of the Rings",
+          "mp3File": "https://audio.jukehost.co.uk/x7bBzOtJiiDUCBmSZPfIJ14wNFMTzCnq",
+          "artist": "Blind Guardian"
+        },
+        {
+          "id": 3,
+          "songTitle": "Lost in the Twilight Hall",
+          "mp3File": "https://audio.jukehost.co.uk/U3dFay27vhS1a5Icu6guls6NPf6dXa41",
+          "artist": "Blind Guardian"
+        },
+        {
+          "id": 4,
+          "songTitle": "Tommyknockers",
+          "mp3File": "https://audio.jukehost.co.uk/fPDEiZ83NyvFnVwCRcFjO7Cz6RMh61CP",
+          "artist":"Blind Guardian"
+        },
+        {
+          "id": 5,
+          "songTitle": "Welcome to Dying",
+          "mp3File": "https://audio.jukehost.co.uk/rpr26xuDIA0sVSoRdUFQPdnqpHgeYlJ3",
+          "artist":"Blind Guardian"
+        }
+      ]
+    }
+  ]
+}

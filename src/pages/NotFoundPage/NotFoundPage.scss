@@ -1,12 +1,24 @@
 .not-found {
-  height: 100%;
+  padding: 10px 20px;
   display: flex;
-  justify-content: center;
-  align-items: center;
   flex-direction: column;
-  padding: 0 25px;
-  p {
-    margin-bottom: 10px;
+
+  &__header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 350px;
+  }
+
+  &__title {
     font-size: 24px;
+    line-height: 26px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 30px;
   }
 }

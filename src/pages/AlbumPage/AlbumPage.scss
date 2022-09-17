@@ -1,12 +1,53 @@
 .album-page {
-  padding: 10px 20px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+
+  &__header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+  }
 
   &__title {
     font-size: 24px;
     line-height: 26px;
   }
-  
-  &__content {}
 
-  &__song-item {}
+  &__content {
+  }
+
+  &__album-info {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__album-logo {
+    margin-right: 10px;
+
+    img {
+      width: 180px;
+      height: 180px;
+    }
+  }
+
+  &__album-credits {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__album-title {
+  }
+
+  &__album__artist {
+  }
+
+  &__album__genre {
+  }
+
+  &__album__release-date {
+  }
+
+  &__album-songs {
+  }
 }

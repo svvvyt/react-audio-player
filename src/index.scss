@@ -7,7 +7,7 @@ body {
 }
 
 ::-webkit-scrollbar {
-  height: 7px; /* width of the entire scrollbar */
+  height: 8px; /* width of the entire scrollbar */
 }
 
 ::-webkit-scrollbar-track {
@@ -17,5 +17,5 @@ body {
 
 ::-webkit-scrollbar-thumb {
   background-color: #3c5288; /* color of the scroll thumb */
-  border-radius: 20px; /* roundness of the scroll thumb */
+  border-radius: 10px; /* roundness of the scroll thumb */
 }

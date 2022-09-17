@@ -1,12 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import Player from '../../components/Player/Player';
+// import Player from '../../components/Player/Player';
 import Button from '../../components/UI/Button/Button';
 
 import './SongPage.scss';
-
-import db from '../../db.json';
 
 export default function SongPage() {
   const navigate = useNavigate();
@@ -14,14 +12,14 @@ export default function SongPage() {
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
 
-  useEffect(() => {
-    setNextSongIndex(() => {
-      if (currentSongIndex + 1 > db.songs.length - 1) {
-        return 0;
-      }
-      return currentSongIndex + 1;
-    });
-  }, [currentSongIndex]);
+  // useEffect(() => {
+  //   setNextSongIndex(() => {
+  //     if (currentSongIndex + 1 > db.songs.length - 1) {
+  //       return 0;
+  //     }
+  //     return currentSongIndex + 1;
+  //   });
+  // }, [currentSongIndex]);
 
   return (
     <div className="song-page">
@@ -41,14 +39,13 @@ export default function SongPage() {
             />
           </svg>
         </Button>
+        <div className="song-page__title">%Song-title%</div>
       </div>
-      <div className="song-page__main">
-        <Player
-          songs={db.songs}
-          currentSongIndex={currentSongIndex}
-          setCurrentSongIndex={setCurrentSongIndex}
-        />
-      </div>
+      {/* <Player
+        songs={db.songs}
+        currentSongIndex={currentSongIndex}
+        setCurrentSongIndex={setCurrentSongIndex}
+      /> */}
     </div>
   );
 }

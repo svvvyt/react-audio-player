@@ -1,0 +1,106 @@
+@import '../../styles/variables.scss';
+
+.song-list {
+  width: 100%;
+}
+
+.song-item {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $background-color;
+  color: #fff;
+  border-radius: 15px;
+  transition: 0.3s ease-in-out;
+  padding: 10px 5px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: lighten($color: $background-color, $amount: 10);
+  }
+
+  &:active {
+    background-color: lighten($color: $background-color, $amount: 20);
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &__id {
+    font-size: 16px;
+    color: $secondary-color;
+    transition: $transition;
+    margin: 0 20px;
+
+    &:hover {
+      color: lighten($color: $secondary-color, $amount: 15);
+    }
+
+    &:active {
+      color: lighten($color: $secondary-color, $amount: 20);
+    }
+  }
+
+  &__logo {
+    margin-right: 10px;
+
+    img {
+      width: 50px;
+      height: 50px;
+      border-radius: 15px;
+    }
+  }
+
+  &__credits {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-right: 10px;
+  }
+
+  &__title {
+    margin-bottom: 5px;
+    font-weight: 700;
+    transition: $transition;
+
+    &:hover {
+      color: darken($color: $main-color, $amount: 7);
+    }
+
+    &:active {
+      color: darken($color: $main-color, $amount: 17);
+    }
+  }
+
+  &__artist {
+    color: $secondary-color;
+    transition: $transition;
+
+    &:hover {
+      color: lighten($color: $secondary-color, $amount: 15);
+    }
+
+    &:active {
+      color: lighten($color: $secondary-color, $amount: 20);
+    }
+  }
+
+  &__duration {
+    color: $secondary-color;
+    transition: $transition;
+    margin-right: 20px;
+
+    &:hover {
+      color: lighten($color: $secondary-color, $amount: 15);
+    }
+
+    &:active {
+      color: lighten($color: $secondary-color, $amount: 20);
+    }
+  }
+}

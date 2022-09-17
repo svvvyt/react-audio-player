@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPlay, faPause } from '@fortawesome/free-solid-svg-icons';
-
 import Button from '../UI/Button/Button';
 
 import './MiniPlayer.scss';
@@ -21,79 +18,16 @@ export default function MiniPlayer({
   const progressBarRef = useRef(null);
   const animationRef = useRef(null);
 
-  useEffect(() => {
-    const seconds = Math.floor(audioRef.current.duration);
-    setDuration(seconds);
-    progressBarRef.current.max = seconds;
-  }, [audioRef?.current?.loadedmetadata, audioRef?.current?.readyState]);
+  const togglePlayPause = () => {
+    const prevValue = isPlaying;
+    setIsPlaying(!prevValue);
 
-  const formatTime = (secs) => {
-    const minutes = Math.floor(secs / 60);
-    const returnedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-
-    const seconds = Math.floor(secs % 60);
-    const returnedSeconds = seconds < 10 ? `0${seconds}` : seconds;
-
-    return `${returnedMinutes}:${returnedSeconds}`;
-  };
-
-  const changePlayerCurrentTime = () => {
-    progressBarRef.current.style.setProperty(
-      '--seek-before-width',
-      `${(progressBarRef.current.value / duration) * 100}%`
-    );
-    setCurrentTime(progressBarRef.current.value);
-  };
-
-  const changeRange = () => {
-    audioRef.current.currentTime = progressBarRef.current.value;
-    changePlayerCurrentTime();
-  };
-
-  function skipSong(forwards = true) {
-    if (forwards) {
-      setCurrentSongIndex(() => {
-        let temp = currentSongIndex;
-        temp++;
-
-        if (temp > songs.length - 1) {
-          temp = 0;
-        }
-
-        return temp;
-      });
-    } else {
-      setCurrentSongIndex(() => {
-        let temp = currentSongIndex;
-        temp--;
-
-        if (temp < 0) {
-          temp = songs.length - 1;
-        }
-        return temp;
-      });
-    }
-  }
-
-  const handleNext = () => {
-    skipSong();
-  };
-
-  const whilePlaying = () => {
-    progressBarRef.current.value = audioRef.current.currentTime;
-    changePlayerCurrentTime();
-    animationRef.current = requestAnimationFrame(whilePlaying);
-  };
-
-  useEffect(() => {
-    if (isPlaying) {
+    if (!prevValue) {
       audioRef.current.play();
-      animationRef.current = requestAnimationFrame(whilePlaying);
     } else {
       audioRef.current.pause();
-      cancelAnimationFrame(animationRef.current);
     }
-  });
+  };
 
   return (
     <div className="mini-player">
@@ -146,8 +80,42 @@ export default function MiniPlayer({
               />
             </svg>
           </Button>
-          <Button onClick={() => setIsPlaying(!isPlaying)}>
-            <FontAwesomeIcon icon={isPlaying ? faPause : faPlay} />
+          <Button mini onClick={() => setIsPlaying(!isPlaying)}>
+            {isPlaying ? (
+              <svg
+                width="39"
+                height="42"
+                viewBox="0 0 36 39"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14.2961 9.0692V33.5196M24.2961 9.0692V33.5196"
+                  stroke="#EAF0FF"
+                  strokeWidth="3"
+                />
+              </svg>
+            ) : (
+              <svg
+                width="17"
+                height="17"
+                viewBox="0 0 33 33"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g clipPath="url(#clip0_805_392)">
+                  <path
+                    d="M7.02214 0.727617C4.047 -0.978964 1.63495 0.419088 1.63495 3.84776V29.1498C1.63495 32.5819 4.047 33.9781 7.02214 32.2732L29.1374 19.5902C32.1135 17.883 32.1135 15.1171 29.1374 13.4104L7.02214 0.727617Z"
+                    fill="white"
+                  />
+                </g>
+                <defs>
+                  <clipPath id="clip0_805_392">
+                    <rect width="33" height="33" fill="white" />
+                  </clipPath>
+                </defs>
+              </svg>
+            )}
           </Button>
           <Button mini onClick={() => skipSong()}>
             <svg

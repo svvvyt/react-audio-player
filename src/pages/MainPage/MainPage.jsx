@@ -1,30 +1,43 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-import Album from '../../components/Album/Album';
-import MiniPlayer from '../../components/MiniPlayer/MiniPlayer';
+import AlbumList from '../../components/AlbumList/AlbumList';
+// import MiniPlayer from '../../components/MiniPlayer/MiniPlayer';
 import Search from '../../components/Search/Search';
 import Button from '../../components/UI/Button/Button';
 
 import './MainPage.scss';
 
-import db from '../../db.json';
-
 export default function MainPage() {
+  const [albums, setAlbums] = useState(null);
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
   const [searchQuery, setSearchQuery] = useState('');
 
   const navigate = useNavigate();
 
+  const fetchAlbums = () => {
+    axios
+      .get('http://localhost:3001/albums')
+      .then((res) => {
+        setAlbums(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
   useEffect(() => {
-    setNextSongIndex(() => {
-      if (currentSongIndex + 1 > db.songs.length - 1) {
-        return 0;
-      }
-      return currentSongIndex + 1;
-    });
-  }, [currentSongIndex]);
+    fetchAlbums();
+  }, []);
+
+  // useEffect(() => {
+  //   setNextSongIndex(() => {
+  //     if (currentSongIndex + 1 > albums[0].songs.length - 1) {
+  //       return 0;
+  //     }
+  //     return currentSongIndex + 1;
+  //   });
+  // }, [currentSongIndex]);
 
   return (
     <div>
@@ -52,42 +65,26 @@ export default function MainPage() {
         </div>
         <div className="main-page__content">
           <div className="main-page__playlists">
-            <div className="main-page__playlists-title">My Playlists</div>
+            <div className="main-page__playlists-title">My Albums</div>
             <div className="main-page__playlists-content">
-              {db.songs &&
-                db.songs.map((song, index) => (
-                  <Album
-                    className="main-page__playlists-item"
-                    songs={db.songs}
-                    songIndex={index}
-                    onClick={() => navigate('/album')}
-                  />
-                ))}
+              {albums && <AlbumList items={albums} />}
             </div>
           </div>
           <div className="main-page__playlists">
             <div className="main-page__playlists-title">My Playlists</div>
             <div className="main-page__playlists-content">
-              {db.songs &&
-                db.songs.map((song, index) => (
-                  <Album
-                    className="main-page__playlists-item"
-                    songs={db.songs}
-                    songIndex={index}
-                    onClick={() => navigate('/album')}
-                  />
-                ))}
+              {albums && <AlbumList items={albums} />}
             </div>
           </div>
         </div>
       </div>
       <div className="main-page__mini-player">
-        <MiniPlayer
-          songs={db.songs}
+        {/* <MiniPlayer
+          songs={albums}
           currentSongIndex={currentSongIndex}
           setCurrentSongIndex={setCurrentSongIndex}
           onClick={() => navigate('/song')}
-        />
+        /> */}
       </div>
     </div>
   );
