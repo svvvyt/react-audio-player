@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 // import Player from '../../components/Player/Player';
 import Button from '../../components/UI/Button/Button';
@@ -9,8 +10,24 @@ import './SongPage.scss';
 export default function SongPage() {
   const navigate = useNavigate();
 
+  const [albums, setAlbums] = useState(null);
+  const [currentAlbumIndex, setCurrentAlbumIndex] = useState(0);
+
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(0);
+
+  const fetchAlbums = () => {
+    axios
+      .get('http://localhost:3001/albums')
+      .then((res) => {
+        setAlbums(res.data);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => {
+    fetchAlbums();
+  }, []);
 
   // useEffect(() => {
   //   setNextSongIndex(() => {
@@ -42,9 +59,10 @@ export default function SongPage() {
         <div className="song-page__title">%Song-title%</div>
       </div>
       {/* <Player
-        songs={db.songs}
+        songs={albums[0].songs}
         currentSongIndex={currentSongIndex}
         setCurrentSongIndex={setCurrentSongIndex}
+        nextSongIndex={nextSongIndex}
       /> */}
     </div>
   );

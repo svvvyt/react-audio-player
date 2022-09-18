@@ -10,12 +10,15 @@ import Button from '../../components/UI/Button/Button';
 import './MainPage.scss';
 
 export default function MainPage() {
+  const navigate = useNavigate();
+
   const [albums, setAlbums] = useState(null);
+  const [currentAlbumIndex, setCurrentAlbumIndex] = useState(0);
+  const [nextAlbumIndex, setNextAlbumIndex] = useState(currentAlbumIndex + 1);
+
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
   const [searchQuery, setSearchQuery] = useState('');
-
-  const navigate = useNavigate();
 
   const fetchAlbums = () => {
     axios
@@ -32,16 +35,29 @@ export default function MainPage() {
 
   useEffect(() => {
     setNextSongIndex(() => {
-      if (albums && currentSongIndex + 1 > albums[0].songs.length - 1) {
+      if (
+        albums &&
+        currentSongIndex &&
+        currentSongIndex + 1 > albums[currentAlbumIndex].songs.length - 1
+      ) {
         return 0;
       }
       return currentSongIndex + 1;
     });
   }, [currentSongIndex]);
 
-  {
-    albums && console.log(albums[0].songs[0]);
-  }
+  useEffect(() => {
+    setNextAlbumIndex(() => {
+      if (
+        albums &&
+        currentAlbumIndex &&
+        currentAlbumIndex + 1 > albums.length - 1
+      ) {
+        return 0;
+      }
+      return currentAlbumIndex + 1;
+    });
+  }, [currentAlbumIndex]);
 
   return (
     <div>
@@ -81,12 +97,18 @@ export default function MainPage() {
       <div className="main-page__mini-player">
         {albums && (
           <MiniPlayer
-            songs={albums[0].songs}
+            albums={albums}
+            currentAlbumIndex={currentAlbumIndex}
+            setCurrentAlbumIndex={setCurrentAlbumIndex}
+            nextAlbumIndex={nextAlbumIndex}
+            songs={albums[currentAlbumIndex].songs}
             currentSongIndex={currentSongIndex}
             setCurrentSongIndex={setCurrentSongIndex}
             nextSongIndex={nextSongIndex}
             onClick={() =>
-              navigate(`/album/${albums[0].artist}/${albums[0].albumTitle}`)
+              navigate(
+                `/album/${albums[currentAlbumIndex].artist}/${albums[currentAlbumIndex].albumTitle}`
+              )
             }
           />
         )}

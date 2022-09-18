@@ -10,8 +10,8 @@ export default function Player({
   setCurrentSongIndex,
 }) {
   const [isPlaying, setIsPlaying] = useState(false);
-  const [duration, setDuration] = useState(false);
-  const [currentTime, setCurrentTime] = useState(false);
+  const [duration, setDuration] = useState(0);
+  const [currentTime, setCurrentTime] = useState(0);
 
   const audioRef = useRef(null);
   const progressBarRef = useRef(null);
@@ -20,33 +20,11 @@ export default function Player({
   useEffect(() => {
     const seconds = Math.floor(audioRef.current.duration);
     setDuration(seconds);
+
     progressBarRef.current.max = seconds;
   }, [audioRef?.current?.loadedmetadata, audioRef?.current?.readyState]);
 
-  const formatTime = (secs) => {
-    const minutes = Math.floor(secs / 60);
-    const returnedMinutes = minutes < 10 ? `0${minutes}` : minutes;
-
-    const seconds = Math.floor(secs % 60);
-    const returnedSeconds = seconds < 10 ? `0${seconds}` : seconds;
-
-    return `${returnedMinutes}:${returnedSeconds}`;
-  };
-
-  const changePlayerCurrentTime = () => {
-    progressBarRef.current.style.setProperty(
-      '--seek-before-width',
-      `${(progressBarRef.current.value / duration) * 100}%`
-    );
-    setCurrentTime(progressBarRef.current.value);
-  };
-
-  const changeRange = () => {
-    audioRef.current.currentTime = progressBarRef.current.value;
-    changePlayerCurrentTime();
-  };
-
-  function skipSong(forwards = true) {
+  const skipSong = (forwards = true) => {
     if (forwards) {
       setCurrentSongIndex(() => {
         let temp = currentSongIndex;
@@ -66,13 +44,27 @@ export default function Player({
         if (temp < 0) {
           temp = songs.length - 1;
         }
+
         return temp;
       });
     }
-  }
+  };
 
   const handleNext = () => {
     skipSong();
+  };
+
+  const changePlayerCurrentTime = () => {
+    progressBarRef.current.style.setProperty(
+      '--seek-before-width',
+      `${(progressBarRef.current.value / duration) * 100}%`
+    );
+    setCurrentTime(progressBarRef.current.value);
+  };
+
+  const changeRange = () => {
+    audioRef.current.currentTime = progressBarRef.current.value;
+    changePlayerCurrentTime();
   };
 
   const whilePlaying = () => {
@@ -81,15 +73,28 @@ export default function Player({
     animationRef.current = requestAnimationFrame(whilePlaying);
   };
 
-  useEffect(() => {
-    if (isPlaying) {
+  const formatTime = (secs) => {
+    const minutes = Math.floor(secs / 60);
+    const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+
+    const seconds = Math.floor(secs % 60);
+    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+
+    return `${returnedMinutes}:${returnedSeconds}`;
+  };
+
+  const togglePlayPause = () => {
+    const prevValue = isPlaying;
+    setIsPlaying(!prevValue);
+
+    if (!prevValue) {
       audioRef.current.play();
       animationRef.current = requestAnimationFrame(whilePlaying);
     } else {
       audioRef.current.pause();
       cancelAnimationFrame(animationRef.current);
     }
-  });
+  };
 
   return (
     <div className="player">
@@ -153,7 +158,7 @@ export default function Player({
               />
             </svg>
           </Button>
-          <Button main onClick={() => setIsPlaying(!isPlaying)}>
+          <Button main onClick={togglePlayPause}>
             {isPlaying ? (
               <svg
                 width="39"
