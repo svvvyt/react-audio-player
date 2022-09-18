@@ -7,7 +7,7 @@ export default function SongList({ items }) {
     <div className="song-list">
       {items &&
         items.map((song) => (
-          <div className="song-item">
+          <div className="song-item" key={song.id}>
             <div className="song-item__info">
               <div className="song-item__id">{song.id}</div>
               <div className="song-item__credits">

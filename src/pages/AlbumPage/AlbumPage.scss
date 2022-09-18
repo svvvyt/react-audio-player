@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .album-page {
   padding: 10px;
   display: flex;
@@ -20,10 +22,11 @@
   &__album-info {
     display: flex;
     flex-direction: row;
+    margin-bottom: 10px;
   }
 
   &__album-logo {
-    margin-right: 10px;
+    margin-right: 15px;
 
     img {
       width: 180px;
@@ -34,18 +37,29 @@
   &__album-credits {
     display: flex;
     flex-direction: column;
+    justify-content: center;
   }
 
   &__album-title {
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 700;
+    margin-bottom: 15px;
   }
 
-  &__album__artist {
+  &__album-artist {
+    font-size: 16px;
+    color: $secondary-color;
+    margin-bottom: 15px;
   }
 
-  &__album__genre {
+  &__album-genre {
+    color: $secondary-color;
+    margin-bottom: 15px;
   }
 
-  &__album__release-date {
+  &__album-release-date {
+    color: $secondary-color;
   }
 
   &__album-songs {

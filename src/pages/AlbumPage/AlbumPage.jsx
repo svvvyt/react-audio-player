@@ -26,10 +26,6 @@ export default function AlbumPage() {
     fetchAlbum();
   }, []);
 
-  {
-    album && console.log(album[0]);
-  }
-
   return (
     <div className="album-page">
       <div className="album-page__header">
@@ -61,7 +57,9 @@ export default function AlbumPage() {
                 {album[0].albumTitle}
               </div>
               <div className="album-page__album-artist">{album[0].artist}</div>
-              <div className="album-page__album-genre">{album[0].genre}</div>
+              <div className="album-page__album-genre">
+                Genre: {album[0].genre}
+              </div>
               <div className="album-page__album-release-date">
                 Release date: {album[0].releaseDate}
               </div>

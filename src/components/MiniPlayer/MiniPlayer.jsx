@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-
 import Button from '../UI/Button/Button';
 
 import './MiniPlayer.scss';
@@ -18,24 +17,84 @@ export default function MiniPlayer({
   const progressBarRef = useRef(null);
   const animationRef = useRef(null);
 
+  useEffect(() => {
+    const seconds = Math.floor(audioRef.current.duration);
+    setDuration(seconds);
+
+    progressBarRef.current.max = seconds;
+  }, [audioRef?.current?.loadedmetadata, audioRef?.current?.readyState]);
+
+  const skipSong = (forwards = true) => {
+    if (forwards) {
+      setCurrentSongIndex(() => {
+        let temp = currentSongIndex;
+        temp++;
+
+        if (temp > songs.length - 1) {
+          temp = 0;
+        }
+
+        return temp;
+      });
+    } else {
+      setCurrentSongIndex(() => {
+        let temp = currentSongIndex;
+        temp--;
+
+        if (temp < 0) {
+          temp = songs.length - 1;
+        }
+
+        return temp;
+      });
+    }
+  };
+
+  const changePlayerCurrentTime = () => {
+    progressBarRef.current.style.setProperty(
+      '--seek-before-width',
+      `${(progressBarRef.current.value / duration) * 100}%`
+    );
+    setCurrentTime(progressBarRef.current.value);
+  };
+
+  const changeRange = () => {
+    audioRef.current.currentTime = progressBarRef.current.value;
+    changePlayerCurrentTime();
+  };
+
+  const whilePlaying = () => {
+    progressBarRef.current.value = audioRef.current.currentTime;
+    changePlayerCurrentTime();
+    animationRef.current = requestAnimationFrame(whilePlaying);
+  };
+
+  const formatTime = (secs) => {
+    const minutes = Math.floor(secs / 60);
+    const returnedMinutes = minutes < 10 ? `0${minutes}` : `${minutes}`;
+
+    const seconds = Math.floor(secs % 60);
+    const returnedSeconds = seconds < 10 ? `0${seconds}` : `${seconds}`;
+
+    return `${returnedMinutes}:${returnedSeconds}`;
+  };
+
   const togglePlayPause = () => {
     const prevValue = isPlaying;
     setIsPlaying(!prevValue);
 
     if (!prevValue) {
       audioRef.current.play();
+      animationRef.current = requestAnimationFrame(whilePlaying);
     } else {
       audioRef.current.pause();
+      cancelAnimationFrame(animationRef.current);
     }
   };
 
   return (
     <div className="mini-player">
-      <audio
-        src={songs[currentSongIndex].mp3File}
-        ref={audioRef}
-        onEnded={handleNext}
-      />
+      <audio src={songs[currentSongIndex].mp3File} ref={audioRef} />
       <div>
         <input
           className="mini-player__progress-bar"
@@ -80,7 +139,7 @@ export default function MiniPlayer({
               />
             </svg>
           </Button>
-          <Button mini onClick={() => setIsPlaying(!isPlaying)}>
+          <Button mini onClick={togglePlayPause}>
             {isPlaying ? (
               <svg
                 width="39"
@@ -117,7 +176,7 @@ export default function MiniPlayer({
               </svg>
             )}
           </Button>
-          <Button mini onClick={() => skipSong()}>
+          <Button mini onClick={() => skipSong(false)}>
             <svg
               width="21"
               height="21"

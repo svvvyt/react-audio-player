@@ -26,7 +26,7 @@ export default function UploadPage() {
             />
           </svg>
         </Button>
-        <div className="upload-page__title">Upload song</div>
+        <div className="upload-page__title">Upload Page</div>
       </div>
     </div>
   );

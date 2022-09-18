@@ -20,7 +20,7 @@ export default function Search({ value, onChange }) {
             onChange={onChange}
             type="text"
           />
-          <Button onClick={handleCloseSearch}>
+          <Button onClick={handleCloseSearch} mini>
             <svg
               width="12"
               height="12"
