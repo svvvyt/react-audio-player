@@ -26,6 +26,10 @@ export default function AlbumPage() {
     fetchAlbum();
   }, []);
 
+  {
+    album && console.log(album[0].songs);
+  }
+
   return (
     <div className="album-page">
       <div className="album-page__header">
@@ -66,7 +70,7 @@ export default function AlbumPage() {
             </div>
           </div>
           <div className="album-page__album-songs">
-            {<SongList items={album[0].songs} />}
+            <SongList items={album[0].songs} />
           </div>
         </div>
       )}

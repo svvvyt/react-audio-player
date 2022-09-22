@@ -37,7 +37,6 @@ export default function MainPage() {
     setNextSongIndex(() => {
       if (
         albums &&
-        currentSongIndex &&
         currentSongIndex + 1 > albums[currentAlbumIndex].songs.length - 1
       ) {
         return 0;
@@ -48,11 +47,7 @@ export default function MainPage() {
 
   useEffect(() => {
     setNextAlbumIndex(() => {
-      if (
-        albums &&
-        currentAlbumIndex &&
-        currentAlbumIndex + 1 > albums.length - 1
-      ) {
+      if (albums && currentAlbumIndex + 1 > albums.length - 1) {
         return 0;
       }
       return currentAlbumIndex + 1;

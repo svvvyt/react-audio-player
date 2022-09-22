@@ -231,10 +231,10 @@ export default function MiniPlayer({
           </div>
           <div className="mini-player__album-controls">
             <Button mini onClick={() => skipAlbum(false)}>
-              {'<<'}
+              {'<<<'}
             </Button>
             <Button mini onClick={() => skipAlbum()}>
-              {'>>'}
+              {'>>>'}
             </Button>
           </div>
         </div>
