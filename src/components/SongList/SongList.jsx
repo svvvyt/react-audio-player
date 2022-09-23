@@ -1,25 +1,30 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import classNames from 'classnames';
 
 import './SongList.scss';
 
 export default function SongList({ items }) {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(true);
   const [activeItem, setActiveItem] = useState(null);
 
   const audioRef = useRef(null);
 
-  const togglePlayPause = () => {
+  const handleActiveItem = (song) => {
+    setActiveItem(song);
+    audioRef.current.src = song.mp3File;
+
     if (isPlaying) {
       setIsPlaying(!isPlaying);
-      console.log(isPlaying);
       audioRef.current.play();
     } else {
       setIsPlaying(!isPlaying);
-      console.log(isPlaying);
       audioRef.current.pause();
     }
   };
+
+  useEffect(() => {
+    console.log(audioRef.current);
+  }, [audioRef.current]);
 
   return (
     <div className="song-list">
@@ -30,13 +35,13 @@ export default function SongList({ items }) {
               'active-item': activeItem && activeItem.id === song.id,
             })}
             onClick={() => {
-              setActiveItem(song);
+              handleActiveItem(song);
               console.log(activeItem);
-              togglePlayPause(activeItem);
+              // togglePlayPause();
             }}
             key={song.id}
           >
-            {activeItem && <audio src={activeItem.mp3File} ref={audioRef} />}
+            <audio src={song.mp3File} ref={audioRef} />
             <div className="song-item__info">
               <div className="song-item__id">{song.id}</div>
               <div className="song-item__credits">
@@ -44,7 +49,6 @@ export default function SongList({ items }) {
                 <div className="song-item__artist">{song.artist}</div>
               </div>
             </div>
-            {/* <div className="song-item__duration">03:12</div> */}
           </div>
         ))}
     </div>

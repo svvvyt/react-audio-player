@@ -16,7 +16,7 @@ function App() {
         <Route path="/" element={<Navigate to="/main" />} />
         <Route path="/main" element={<MainPage />} />
         <Route path="/album/:artist/:albumTitle" element={<AlbumPage />} />
-        <Route path="/song" element={<SongPage />} />
+        <Route path="/song/:artist/:album/:song" element={<SongPage />} />
         <Route path="/upload" element={<UploadPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

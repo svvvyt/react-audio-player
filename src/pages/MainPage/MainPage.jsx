@@ -102,7 +102,7 @@ export default function MainPage() {
             nextSongIndex={nextSongIndex}
             onClick={() =>
               navigate(
-                `/album/${albums[currentAlbumIndex].artist}/${albums[currentAlbumIndex].albumTitle}`
+                `/song/${albums[currentAlbumIndex].artist}/${albums[currentAlbumIndex].albumTitle}/${albums[currentAlbumIndex].songs[currentSongIndex].songTitle}`
               )
             }
           />
