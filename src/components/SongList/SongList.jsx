@@ -4,27 +4,27 @@ import classNames from 'classnames';
 import './SongList.scss';
 
 export default function SongList({ items }) {
-  const [isPlaying, setIsPlaying] = useState(true);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [activeItem, setActiveItem] = useState(null);
 
   const audioRef = useRef(null);
 
   const handleActiveItem = (song) => {
     setActiveItem(song);
-    audioRef.current.src = song.mp3File;
+    console.log(song);
 
-    if (isPlaying) {
-      setIsPlaying(!isPlaying);
+    if (audioRef.current.src !== song.mp3File) {
+      audioRef.current.src = song.mp3File;
+    }
+
+    if ((activeItem && activeItem.id !== song.id) || isPlaying === false) {
+      setIsPlaying(true);
       audioRef.current.play();
-    } else {
-      setIsPlaying(!isPlaying);
+    } else if (activeItem && activeItem.id === song.id && isPlaying === true) {
+      setIsPlaying(false);
       audioRef.current.pause();
     }
   };
-
-  useEffect(() => {
-    console.log(audioRef.current);
-  }, [audioRef.current]);
 
   return (
     <div className="song-list">
@@ -36,8 +36,6 @@ export default function SongList({ items }) {
             })}
             onClick={() => {
               handleActiveItem(song);
-              console.log(activeItem);
-              // togglePlayPause();
             }}
             key={song.id}
           >
