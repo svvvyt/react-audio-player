@@ -15,14 +15,15 @@ export default function MainPage() {
   const [albums, setAlbums] = useState(null);
   const [currentAlbumIndex, setCurrentAlbumIndex] = useState(0);
   const [nextAlbumIndex, setNextAlbumIndex] = useState(currentAlbumIndex + 1);
-
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [nextSongIndex, setNextSongIndex] = useState(currentSongIndex + 1);
+
   const [searchQuery, setSearchQuery] = useState('');
+  const keys = ['albumTitle', 'artist'];
 
   const fetchAlbums = () => {
     axios
-      .get('http://localhost:3001/albums')
+      .get(`http://localhost:3001/albums/`)
       .then((res) => {
         setAlbums(res.data);
       })
@@ -60,7 +61,7 @@ export default function MainPage() {
         <div className="main-page__header">
           <Search
             value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
+            onChangeInput={(e) => setSearchQuery(e.target.value)}
           />
         </div>
         <div className="main-page__content">
@@ -84,7 +85,17 @@ export default function MainPage() {
               </Button>
             </div>
             <div className="main-page__playlists-content">
-              {albums && <AlbumList items={albums} />}
+              {albums && (
+                <AlbumList
+                  items={albums.filter((album) =>
+                    keys.some((key) =>
+                      album[key]
+                        .toLowerCase()
+                        .includes(searchQuery.toLocaleLowerCase())
+                    )
+                  )}
+                />
+              )}
             </div>
           </div>
         </div>

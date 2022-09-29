@@ -2,11 +2,13 @@
 
 .search {
   transition: $transition;
+  border-radius: 30px;
 
   &__field {
     display: flex;
     flex-direction: row;
     border-radius: 30px;
+    border: 1px solid #fff;
 
     input {
       width: 200px;
@@ -21,5 +23,9 @@
         opacity: 0.6;
       }
     }
+  }
+
+  &__btn {
+    border: 1px solid transparent;
   }
 }

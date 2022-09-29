@@ -1,3 +1,5 @@
+@import '../../styles/variables.scss';
+
 .song-page {
   padding: 10px 20px;
   display: flex;
@@ -7,11 +9,21 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-bottom: 50px;
+    padding: 10px 0 50px;
+  }
+
+  &__back-btn {
+    margin-right: 20px;
   }
 
   &__title {
     font-size: 24px;
-    line-height: 26px;
+    line-height: 32px;
+  }
+
+  &__artist-title {
+    color: $secondary-color;
+    font-size: 18px;
+    line-height: 24px;
   }
 }

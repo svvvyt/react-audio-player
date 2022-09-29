@@ -1,26 +1,24 @@
 import React, { useState } from 'react';
+// import debounce from 'lodash.debounce';
+
 import Button from '../UI/Button/Button';
 
 import './Search.scss';
 
-export default function Search({ value, onChange }) {
+export default function Search({ value, onChangeInput }) {
   const [isActive, setIsActive] = useState(false);
-
-  const handleCloseSearch = () => {
-    setIsActive(false);
-  };
 
   return (
     <div className="search">
       {isActive ? (
         <div className="search__field">
           <input
-            placeholder="Enter song/artist/album..."
-            value={value}
-            onChange={onChange}
+            placeholder="Enter album or artist..."
             type="text"
+            value={value}
+            onChange={onChangeInput}
           />
-          <Button onClick={handleCloseSearch} mini>
+          <Button mini onClick={() => setIsActive(false)}>
             <svg
               width="12"
               height="12"
@@ -42,7 +40,7 @@ export default function Search({ value, onChange }) {
           </Button>
         </div>
       ) : (
-        <Button onClick={() => setIsActive(true)}>
+        <Button className="search__btn" onClick={() => setIsActive(true)}>
           <svg
             width="20"
             height="21"

@@ -178,8 +178,9 @@
 
   &__controls {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: space-between;
+    align-items: center;
 
     button {
       svg {
@@ -187,6 +188,25 @@
           fill: $main-color;
         }
       }
+    }
+  }
+
+  &__song-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__album-controls {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    button {
+      color: #fff;
+      font-size: 24px;
     }
   }
 }
